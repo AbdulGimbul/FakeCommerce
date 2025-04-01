@@ -22,18 +22,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavController
 import dev.abdl.fakecommerce.ui.components.DefaultPreview
 import dev.abdl.fakecommerce.ui.components.DefaultTextField
+import dev.abdl.fakecommerce.ui.navigation.Screen
 
 @Composable
-fun LoginScreen(viewModel: LoginViewModel, onAuthSuccess: () -> Unit) {
+fun LoginScreen(
+    viewModel: LoginViewModel,
+    navController: NavController
+) {
 
     val uiState = viewModel.uiState.collectAsStateWithLifecycle()
 
     when (val state = uiState.value) {
         is LoginUiState.Authenticated -> {
-            LaunchedEffect(Unit) {
-                onAuthSuccess()
+            navController.navigate(Screen.Home.route) {
+                popUpTo(Screen.Login.route) {
+                    inclusive = true
+                }
             }
         }
 
@@ -65,12 +72,12 @@ fun Login(
         )
 
         DefaultTextField(
-            value = uiState.email,
+            value = uiState.username,
             label = "Email",
             hint = "email@mail.com",
             leadingIcon = Icons.Filled.Email,
             imeAction = ImeAction.Next,
-            error = uiState.emailError,
+            error = uiState.usernameError,
             onValueChanged = { onEvent(LoginUiEvent.EmailChanged(it)) }
         )
 

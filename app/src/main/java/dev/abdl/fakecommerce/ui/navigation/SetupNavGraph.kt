@@ -20,6 +20,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import dev.abdl.fakecommerce.features.auth.presentation.LoginScreen
 import dev.abdl.fakecommerce.features.auth.presentation.LoginViewModel
 import androidx.compose.runtime.getValue
+import androidx.hilt.navigation.compose.hiltViewModel
+import dev.abdl.fakecommerce.features.home.presentation.HomeScreen
 
 @Composable
 fun SetupNavGraph(navController: NavHostController) {
@@ -40,13 +42,11 @@ fun SetupNavGraph(navController: NavHostController) {
         ) {
 
             composable(route = Screen.Login.route) {
-                LoginScreen(viewModel = LoginViewModel(), onAuthSuccess = {
-                    navController.navigate(Screen.Login.route) {
-                        popUpTo(Screen.Login.route) {
-                            inclusive = true
-                        }
-                    }
-                })
+                LoginScreen(viewModel = hiltViewModel(), navController = navController)
+            }
+
+            composable(route = Screen.Home.route) {
+                HomeScreen()
             }
         }
     }

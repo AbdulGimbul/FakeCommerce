@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JetClientState">
+    <option name="folders">
+      <list>
+        <folderState>
+          <option name="environmentGroups">
+            <list>
+              <environmentGroupState>
+                <option name="name" value="Default" />
+              </environmentGroupState>
+            </list>
+          </option>
+          <option name="folders">
+            <list>
+              <folderState>
+                <option name="id" value="e8f907ba-5b3f-480d-b76e-6d6b1e30e8c9" />
+                <option name="name" value="Auth" />
+                <option name="requests">
+                  <list>
+                    <requestState>
+                      <option name="body">
+                        <bodyState>
+                          <option name="raw" value="{&#10;  &quot;username&quot;: &quot;johnd&quot;,&#10;  &quot;password&quot;: &quot;m38rmF$&quot;&#10;}" />
+                          <option name="type" value="JSON" />
+                        </bodyState>
+                      </option>
+                      <option name="id" value="a03ced4d-f100-4f2e-915a-9383fc1ad6f0" />
+                      <option name="method" value="POST" />
+                      <option name="name" value="Login" />
+                      <option name="sortWeight" value="1000000" />
+                      <option name="url" value="https://fakestoreapi.com/auth/login" />
+                    </requestState>
+                  </list>
+                </option>
+                <option name="sortWeight" value="1000000" />
+              </folderState>
+            </list>
+          </option>
+          <option name="id" value="c0186e77-a264-4989-8fa2-669decee7c12" />
+          <option name="name" value="FakeStoreApi" />
+          <option name="selectedEnvironmentIds">
+            <map>
+              <entry key="default" />
+            </map>
+          </option>
+          <option name="syncProperties">
+            <synchronizationPropertiesState>
+              <option name="autoSync" value="true" />
+              <option name="folderPath" value="$PROJECT_DIR$/.jetclient" />
+            </synchronizationPropertiesState>
+          </option>
+        </folderState>
+      </list>
+    </option>
+    <option name="id" value="fc54f8da-f97c-42bc-b3b3-e81d54206c1e" />
+    <option name="version" value="6" />
+  </component>
+</project>

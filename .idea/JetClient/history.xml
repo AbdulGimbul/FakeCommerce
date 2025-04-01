@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="History">
+    <option name="requestHistoryStates">
+      <list>
+        <requestHistoryState>
+          <option name="dateTime" value="1743477611412" />
+          <option name="id" value="663817e4-9866-4484-91d1-30c90c52049c" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="raw" value="{&#10;  &quot;username&quot;: &quot;johnd&quot;,&#10;  &quot;password&quot;: &quot;m38rmF$&quot;&#10;}" />
+                  <option name="type" value="JSON" />
+                </bodyState>
+              </option>
+              <option name="id" value="a03ced4d-f100-4f2e-915a-9383fc1ad6f0" />
+              <option name="method" value="POST" />
+              <option name="name" value="Login" />
+              <option name="sortWeight" value="1000000" />
+              <option name="url" value="https://fakestoreapi.com/auth/login" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJ0b2tlbiI6ImV5SmhiR2NpT2lKSVV6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS5leUp6ZFdJaU9qRXNJblZ6WlhJaU9pSnFiMmh1WkNJc0ltbGhkQ0k2TVRjME16UTNOell4TVgwLkpBZnpSYzhYUXU0TGlTaGZYWXc5aWV0TkR1RlQ0QTZpWktWNERXLVhQQTQifQ==" />
+              <option name="bodyString" value="{&#10;  &quot;token&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXIiOiJqb2huZCIsImlhdCI6MTc0MzQ3NzYxMX0.JAfzRc8XQu4LiShfXYw9ietNDuFT4A6iZKV4DW-XPA4&quot;&#10;}" />
+              <option name="code" value="200" />
+              <option name="connectionEstablishingTime" value="671" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Tue, 01 Apr 2025 03:20:11 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Transfer-Encoding" />
+                    <option name="value" value="chunked" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="access-control-allow-origin" />
+                    <option name="value" value="*" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="etag" />
+                    <option name="value" value="W/&quot;94-hkz3pCab/5nWh130NI6iLKfKLFk&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="x-powered-by" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="cf-cache-status" />
+                    <option name="value" value="DYNAMIC" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Report-To" />
+                    <option name="value" value="{&quot;endpoints&quot;:[{&quot;url&quot;:&quot;https:\/\/a.nel.cloudflare.com\/report\/v4?s=2x860Q6hXKutN9xSDRXQzKCJ1IOnnnvP8MfIbkBPaCw1VCGeoRYfLVig3XZJB2FR6kjPkhFHQxWD6yaATvE0QXo3oXcTdcgB94lVbX4eK6dL0vBQf8hK9vKhJW%2FSxqYGZID8&quot;}],&quot;group&quot;:&quot;cf-nel&quot;,&quot;max_age&quot;:604800}" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="NEL" />
+                    <option name="value" value="{&quot;success_fraction&quot;:0,&quot;report_to&quot;:&quot;cf-nel&quot;,&quot;max_age&quot;:604800}" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Server" />
+                    <option name="value" value="cloudflare" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="CF-RAY" />
+                    <option name="value" value="9294f2fbec407235-SIN" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Encoding" />
+                    <option name="value" value="br" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="alt-svc" />
+                    <option name="value" value="h3=&quot;:443&quot;; ma=86400" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="server-timing" />
+                    <option name="value" value="cfL4;desc=&quot;?proto=TCP&amp;rtt=39243&amp;min_rtt=21000&amp;rtt_var=21779&amp;sent=12&amp;recv=9&amp;lost=0&amp;retrans=4&amp;sent_bytes=6567&amp;recv_bytes=865&amp;delivery_rate=123845&amp;cwnd=238&amp;unsent_bytes=0&amp;cid=fc9f3f7be084cf31&amp;ts=861&amp;x=0&quot;" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="663817e4-9866-4484-91d1-30c90c52049c" />
+              <option name="message" value="OK" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;token&quot;:&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXIiOiJqb2huZCIsImlhdCI6MTc0MzQ3NzYxMX0.JAfzRc8XQu4LiShfXYw9ietNDuFT4A6iZKV4DW-XPA4&quot;}" />
+              <option name="size" value="135" />
+              <option name="time" value="1197" />
+            </responseState>
+          </option>
+          <option name="workspaceId" value="c0186e77-a264-4989-8fa2-669decee7c12" />
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1743482333418" />
+          <option name="id" value="1251c0e2-a2db-48aa-a4fc-9a225a4f4a19" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="raw" value="{&#10;  &quot;username&quot;: &quot;johnd&quot;,&#10;  &quot;password&quot;: &quot;m38rmF$&quot;&#10;}" />
+                  <option name="type" value="JSON" />
+                </bodyState>
+              </option>
+              <option name="id" value="a03ced4d-f100-4f2e-915a-9383fc1ad6f0" />
+              <option name="method" value="POST" />
+              <option name="name" value="Login" />
+              <option name="sortWeight" value="1000000" />
+              <option name="url" value="https://fakestoreapi.com/auth/login" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJ0b2tlbiI6ImV5SmhiR2NpT2lKSVV6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS5leUp6ZFdJaU9qRXNJblZ6WlhJaU9pSnFiMmh1WkNJc0ltbGhkQ0k2TVRjME16UTRNak16TTMwLktTQ3BSMXB6cjN6NERyT21HUVNucWw0dFJsMzlCUDlwSFdPbG5SV3pkNFUifQ==" />
+              <option name="bodyString" value="{&#10;  &quot;token&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXIiOiJqb2huZCIsImlhdCI6MTc0MzQ4MjMzM30.KSCpR1pzr3z4DrOmGQSnql4tRl39BP9pHWOlnRWzd4U&quot;&#10;}" />
+              <option name="code" value="200" />
+              <option name="connectionEstablishingTime" value="202" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Tue, 01 Apr 2025 04:38:53 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Transfer-Encoding" />
+                    <option name="value" value="chunked" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="access-control-allow-origin" />
+                    <option name="value" value="*" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="etag" />
+                    <option name="value" value="W/&quot;94-pwyBNiXJiEzRKzomHu2dIDgAXQw&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="x-powered-by" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="cf-cache-status" />
+                    <option name="value" value="DYNAMIC" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Report-To" />
+                    <option name="value" value="{&quot;endpoints&quot;:[{&quot;url&quot;:&quot;https:\/\/a.nel.cloudflare.com\/report\/v4?s=473K8UQpW5McBnKSSHTHFkC78pQNBnCovrWz9Yd3sIckECxK0DCYYoSGYSrNDP520Rbi5WRfdU5Hky7ruxUrjvj6NTNVPRH%2Bpf3xNGWC%2Bu3mgqtWyWRcMSOPYCIy6Z%2Bov5aw&quot;}],&quot;group&quot;:&quot;cf-nel&quot;,&quot;max_age&quot;:604800}" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="NEL" />
+                    <option name="value" value="{&quot;success_fraction&quot;:0,&quot;report_to&quot;:&quot;cf-nel&quot;,&quot;max_age&quot;:604800}" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Server" />
+                    <option name="value" value="cloudflare" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="CF-RAY" />
+                    <option name="value" value="92956645dd773f8f-SIN" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Encoding" />
+                    <option name="value" value="br" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="alt-svc" />
+                    <option name="value" value="h3=&quot;:443&quot;; ma=86400" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="server-timing" />
+                    <option name="value" value="cfL4;desc=&quot;?proto=TCP&amp;rtt=22148&amp;min_rtt=21847&amp;rtt_var=8408&amp;sent=4&amp;recv=7&amp;lost=0&amp;retrans=0&amp;sent_bytes=234&amp;recv_bytes=1136&amp;delivery_rate=65363&amp;cwnd=247&amp;unsent_bytes=0&amp;cid=c4608a7df14c8753&amp;ts=348&amp;x=0&quot;" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="1251c0e2-a2db-48aa-a4fc-9a225a4f4a19" />
+              <option name="message" value="OK" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;token&quot;:&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXIiOiJqb2huZCIsImlhdCI6MTc0MzQ4MjMzM30.KSCpR1pzr3z4DrOmGQSnql4tRl39BP9pHWOlnRWzd4U&quot;}" />
+              <option name="size" value="136" />
+              <option name="time" value="632" />
+            </responseState>
+          </option>
+          <option name="workspaceId" value="c0186e77-a264-4989-8fa2-669decee7c12" />
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1743482337304" />
+          <option name="id" value="05215549-d087-4051-8a73-0edeabb75b28" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="raw" value="{&#10;  &quot;username&quot;: &quot;johnd&quot;,&#10;  &quot;password&quot;: &quot;m38rmF$&quot;&#10;}" />
+                  <option name="type" value="JSON" />
+                </bodyState>
+              </option>
+              <option name="id" value="a03ced4d-f100-4f2e-915a-9383fc1ad6f0" />
+              <option name="method" value="POST" />
+              <option name="name" value="Login" />
+              <option name="sortWeight" value="1000000" />
+              <option name="url" value="https://fakestoreapi.com/auth/login" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJ0b2tlbiI6ImV5SmhiR2NpT2lKSVV6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS5leUp6ZFdJaU9qRXNJblZ6WlhJaU9pSnFiMmh1WkNJc0ltbGhkQ0k2TVRjME16UTRNak16Tm4wLnNLTHFvcnhYTVlEV3k0enRneDFQQWZiUWxOQTFrZnVzQ0tzQXNNN1VQQ1EifQ==" />
+              <option name="bodyString" value="{&#10;  &quot;token&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXIiOiJqb2huZCIsImlhdCI6MTc0MzQ4MjMzNn0.sKLqorxXMYDWy4ztgx1PAfbQlNA1kfusCKsAsM7UPCQ&quot;&#10;}" />
+              <option name="code" value="200" />
+              <option name="connectionEstablishingTime" value="2" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Tue, 01 Apr 2025 04:38:57 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Transfer-Encoding" />
+                    <option name="value" value="chunked" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="access-control-allow-origin" />
+                    <option name="value" value="*" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="etag" />
+                    <option name="value" value="W/&quot;94-poHFD1BYI6Pw5OOgZXAVl8mzgaI&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="x-powered-by" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="cf-cache-status" />
+                    <option name="value" value="DYNAMIC" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Report-To" />
+                    <option name="value" value="{&quot;endpoints&quot;:[{&quot;url&quot;:&quot;https:\/\/a.nel.cloudflare.com\/report\/v4?s=c5ivSD84mxTH5giq6AcYkHXXkYbDgDy6mk5JF0QR6GVX6YR6hpv8GgNYIq5CqEO14LVy8h2l%2FxL2AFuyDgHpNDNZIOpyQLcbzvEkpJQq%2FRZyzKJ3kLdBPXexrQj0z%2FkHhpNS&quot;}],&quot;group&quot;:&quot;cf-nel&quot;,&quot;max_age&quot;:604800}" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="NEL" />
+                    <option name="value" value="{&quot;success_fraction&quot;:0,&quot;report_to&quot;:&quot;cf-nel&quot;,&quot;max_age&quot;:604800}" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Server" />
+                    <option name="value" value="cloudflare" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="CF-RAY" />
+                    <option name="value" value="9295665cce123f8f-SIN" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Encoding" />
+                    <option name="value" value="br" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="alt-svc" />
+                    <option name="value" value="h3=&quot;:443&quot;; ma=86400" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="server-timing" />
+                    <option name="value" value="cfL4;desc=&quot;?proto=TCP&amp;rtt=25139&amp;min_rtt=21847&amp;rtt_var=9785&amp;sent=10&amp;recv=11&amp;lost=0&amp;retrans=2&amp;sent_bytes=1986&amp;recv_bytes=1425&amp;delivery_rate=65363&amp;cwnd=249&amp;unsent_bytes=0&amp;cid=c4608a7df14c8753&amp;ts=4022&amp;x=0&quot;" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="05215549-d087-4051-8a73-0edeabb75b28" />
+              <option name="message" value="OK" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;token&quot;:&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXIiOiJqb2huZCIsImlhdCI6MTc0MzQ4MjMzNn0.sKLqorxXMYDWy4ztgx1PAfbQlNA1kfusCKsAsM7UPCQ&quot;}" />
+              <option name="size" value="135" />
+              <option name="time" value="642" />
+            </responseState>
+          </option>
+          <option name="workspaceId" value="c0186e77-a264-4989-8fa2-669decee7c12" />
+        </requestHistoryState>
+      </list>
+    </option>
+  </component>
+</project>
