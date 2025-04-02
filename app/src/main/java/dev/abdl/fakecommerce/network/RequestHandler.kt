@@ -1,5 +1,6 @@
 package dev.abdl.fakecommerce.network
 
+import dev.abdl.fakecommerce.features.auth.domain.LoginRequest
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.ResponseException
@@ -41,9 +42,9 @@ class RequestHandler(val httpClient: HttpClient) {
                     }
                 }.execute().body<R>()
 
-//                if (body is LoginRequest) {
-//                    httpClient.authProvider<BearerAuthProvider>()?.clearToken()
-//                }
+                if (body is LoginRequest) {
+                    httpClient.authProvider<BearerAuthProvider>()?.clearToken()
+                }
 
                 NetworkResult.Success(response)
             } catch (e: ResponseException) {

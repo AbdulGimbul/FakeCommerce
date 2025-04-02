@@ -32,6 +32,7 @@ data class Rating(
 
 fun ProductApiModelItem.toProduct(): Product{
     return Product(
+        id = this.id,
         imageUrl = this.image,
         title = this.title,
         priceTag = this.price.toString(),

@@ -11,10 +11,13 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.navArgument
 import dev.abdl.fakecommerce.features.auth.presentation.LoginScreen
+import dev.abdl.fakecommerce.features.detail.presentation.DetailScreen
 import dev.abdl.fakecommerce.features.home.presentation.HomeScreen
 import dev.abdl.fakecommerce.features.cart.presentation.CartScreen
 import dev.abdl.fakecommerce.ui.components.ProfileBottomSheet
@@ -54,6 +57,18 @@ fun SetupNavGraph(navController: NavHostController) {
             composable(route = Screen.Cart.route) {
                 CartScreen(navController = navController)
             }
+            
+            composable(
+                route = "${Screen.Detail.route}/{productId}",
+                arguments = listOf(
+                    navArgument("productId") { type = NavType.StringType }
+                )
+            ) {
+                DetailScreen(
+                    viewModel = hiltViewModel(),
+                    navController = navController
+                )
+            }
         }
 
         if (showProfileSheet) {
@@ -66,7 +81,8 @@ fun SetupNavGraph(navController: NavHostController) {
                             inclusive = true
                         }
                     }
-                }
+                },
+                viewModel = hiltViewModel()
             )
         }
     }

@@ -1,5 +1,6 @@
 package dev.abdl.fakecommerce.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,7 +19,7 @@ import dev.abdl.fakecommerce.features.home.domain.Product
 fun RecommendationSection(
     productItem: List<Product>,
     modifier: Modifier = Modifier,
-    navigateToDetail: (Long) -> Unit,
+    moveToDetail: (String) -> Unit,
 ) {
     LazyVerticalGrid(
         columns = GridCells.Adaptive(160.dp),
@@ -35,6 +36,7 @@ fun RecommendationSection(
                 Card(
                     modifier = Modifier
                         .fillMaxSize()
+                        .clickable { moveToDetail(data.id.toString()) }
                 ) {
                     ProductItem(data)
                 }

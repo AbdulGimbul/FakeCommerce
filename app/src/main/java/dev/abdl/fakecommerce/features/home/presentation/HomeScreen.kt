@@ -1,9 +1,21 @@
 package dev.abdl.fakecommerce.features.home.presentation
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
-import androidx.compose.material3.*
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -17,6 +29,7 @@ import dev.abdl.fakecommerce.features.home.domain.Product
 import dev.abdl.fakecommerce.ui.components.CategorySection
 import dev.abdl.fakecommerce.ui.components.DefaultPreview
 import dev.abdl.fakecommerce.ui.components.RecommendationSection
+import dev.abdl.fakecommerce.ui.navigation.Screen
 
 @Composable
 fun HomeScreen(
@@ -27,7 +40,10 @@ fun HomeScreen(
 
     Home(
         uiState = uiState.value,
-        onEvent = { viewModel.onEvent(it) }
+        onEvent = { viewModel.onEvent(it) },
+        moveToDetailProduct = {
+            navController.navigate("${Screen.Detail.route}/$it")
+        }
     )
 }
 
@@ -35,7 +51,8 @@ fun HomeScreen(
 @Composable
 fun Home(
     uiState: HomeUiState,
-    onEvent: (HomeUiEvent) -> Unit
+    onEvent: (HomeUiEvent) -> Unit,
+    moveToDetailProduct: (String) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -47,9 +64,9 @@ fun Home(
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(horizontal = 16.dp)
         )
-        
+
         Spacer(modifier = Modifier.height(8.dp))
-        
+
         CategorySection(
             categoryItems = categoryItems,
             selectedCategory = uiState.selectedCategory,
@@ -57,9 +74,9 @@ fun Home(
                 onEvent(HomeUiEvent.CategorySelected(category))
             }
         )
-        
+
         Spacer(modifier = Modifier.height(16.dp))
-        
+
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -74,7 +91,7 @@ fun Home(
                 },
                 fontWeight = FontWeight.Bold
             )
-            
+
             if (uiState.selectedCategory != null) {
                 IconButton(
                     onClick = { onEvent(HomeUiEvent.ClearCategoryFilter) }
@@ -86,7 +103,7 @@ fun Home(
                 }
             }
         }
-        
+
         if (uiState.isLoading) {
             CircularProgressIndicator(
                 modifier = Modifier.align(Alignment.CenterHorizontally)
@@ -101,10 +118,10 @@ fun Home(
                 modifier = Modifier.padding(horizontal = 16.dp)
             )
         }
-        
+
         RecommendationSection(
             productItem = uiState.products,
-            navigateToDetail = { /* TODO: Implement navigation */ }
+            moveToDetail = { moveToDetailProduct(it) }
         )
     }
 }
@@ -131,25 +148,25 @@ private val categoryItems = listOf(
 @DefaultPreview
 @Composable
 private fun PreviewHome() {
-    val products = listOf(
-        Product(
-            imageUrl = "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-            title = "Fjallraven - Foldsack No. 1 Backpack",
-            priceTag = "$109.95",
-            category = "men's clothing"
-        ),
-        Product(
-            imageUrl = "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
-            title = "John Hardy Women's Chain Bracelet",
-            priceTag = "$695.00",
-            category = "jewelery"
-        )
-    )
-
-    MaterialTheme {
-        Home(
-            uiState = HomeUiState(products = products),
-            onEvent = {}
-        )
-    }
+//    val products = listOf(
+//        Product(
+//            imageUrl = "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+//            title = "Fjallraven - Foldsack No. 1 Backpack",
+//            priceTag = "$109.95",
+//            category = "men's clothing"
+//        ),
+//        Product(
+//            imageUrl = "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
+//            title = "John Hardy Women's Chain Bracelet",
+//            priceTag = "$695.00",
+//            category = "jewelery"
+//        )
+//    )
+//
+//    MaterialTheme {
+//        Home(
+//            uiState = HomeUiState(products = products),
+//            onEvent = {}
+//        )
+//    }
 }

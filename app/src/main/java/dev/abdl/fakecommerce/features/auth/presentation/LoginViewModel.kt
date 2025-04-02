@@ -7,6 +7,7 @@ import dev.abdl.fakecommerce.features.auth.data.AuthRepository
 import dev.abdl.fakecommerce.features.auth.domain.LoginRequest
 import dev.abdl.fakecommerce.network.onError
 import dev.abdl.fakecommerce.network.onSuccess
+import dev.abdl.fakecommerce.storage.SessionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,7 +17,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val authRepository: AuthRepository
+    private val authRepository: AuthRepository,
+    private val sessionHandler: SessionHandler
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<LoginUiState>(LoginUiState.NotAuthenticated())
@@ -48,6 +50,7 @@ class LoginViewModel @Inject constructor(
             withContext(Dispatchers.Main) {
                 result.onSuccess {
                     if (it.token != null) {
+                        sessionHandler.setUserData(username = ui.username, token = it.token)
                         _uiState.value = LoginUiState.Authenticated
                     }
                 }.onError { error ->
