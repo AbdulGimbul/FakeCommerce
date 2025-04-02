@@ -7,6 +7,8 @@ import dagger.hilt.components.SingletonComponent
 import dev.abdl.fakecommerce.BuildConfig
 import dev.abdl.fakecommerce.features.auth.data.AuthRepository
 import dev.abdl.fakecommerce.features.auth.data.AuthRepositoryImpl
+import dev.abdl.fakecommerce.features.home.data.ProductRepository
+import dev.abdl.fakecommerce.features.home.data.ProductRepositoryImpl
 import dev.abdl.fakecommerce.network.FakeCommerceHttpClientBuilder
 import dev.abdl.fakecommerce.network.RequestHandler
 import io.ktor.client.HttpClient
@@ -39,6 +41,9 @@ class AppModule {
 
     @Provides
     fun provideAuthRepository(impl: AuthRepositoryImpl): AuthRepository = impl
+
+    @Provides
+    fun provideProductRepository(impl: ProductRepositoryImpl): ProductRepository = impl
 
 //    @Provides
 //    fun provideUserRepository(impl: UserRepositoryImpl): UserRepository = impl

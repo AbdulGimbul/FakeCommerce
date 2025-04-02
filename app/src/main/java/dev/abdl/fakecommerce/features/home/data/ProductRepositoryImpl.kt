@@ -1,12 +1,17 @@
 package dev.abdl.fakecommerce.features.home.data
 
-import dev.abdl.fakecommerce.features.home.domain.ProductApiModel
+import dev.abdl.fakecommerce.features.home.domain.ProductApiModelItem
 import dev.abdl.fakecommerce.network.NetworkException
 import dev.abdl.fakecommerce.network.NetworkResult
+import dev.abdl.fakecommerce.network.RequestHandler
 import javax.inject.Inject
 
-class ProductRepositoryImpl @Inject constructor() : ProductRepository {
-    override suspend fun getProducts(): NetworkResult<ProductApiModel, NetworkException> {
-        TODO("Not yet implemented")
+class ProductRepositoryImpl @Inject constructor(
+    private val requestHandler: RequestHandler
+) : ProductRepository {
+    override suspend fun getProducts(): NetworkResult<List<ProductApiModelItem>, NetworkException> {
+        return requestHandler.get(
+            listOf("products")
+        )
     }
 }

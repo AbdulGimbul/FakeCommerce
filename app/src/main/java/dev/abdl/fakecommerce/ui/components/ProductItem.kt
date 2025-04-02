@@ -19,10 +19,11 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
+import dev.abdl.fakecommerce.features.home.domain.Product
 
 @Composable
 fun ProductItem(
-    productItem: ProductItem,
+    productItem: Product,
 ) {
     Column(
         modifier = Modifier
@@ -59,17 +60,12 @@ fun ProductItem(
     }
 }
 
-data class ProductItem(
-    val imageUrl: String, val title: String,
-    val priceTag: String,
-)
-
 @Composable
 @DefaultPreview
 fun ProductReview() {
     MaterialTheme {
         ProductItem(
-            productItem = ProductItem(
+            productItem = Product(
                 imageUrl = "https://picsum.photos/400/400", title = "Produk 6",
                 priceTag = "Rp. 143.000",
             )

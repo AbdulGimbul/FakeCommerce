@@ -10,29 +10,37 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.abdl.fakecommerce.R
+import dev.abdl.fakecommerce.features.home.domain.Product
 import dev.abdl.fakecommerce.ui.components.CategorySection
 import dev.abdl.fakecommerce.ui.components.DefaultPreview
-import dev.abdl.fakecommerce.ui.components.ProductItem
 import dev.abdl.fakecommerce.ui.components.RecommendationSection
 import dev.abdl.fakecommerce.ui.components.ShapeItem
 
 @Composable
 fun HomeScreen(
-//    viewModel: ProfileViewModel,
-//    navController: NavController
+    viewModel: HomeViewModel,
 ) {
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    Home()
+    Home(
+        uiState = uiState,
+//        uiEvent = HomeUiEvent()
+    )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Home() {
+fun Home(
+    uiState: HomeUiState,
+//    uiEvent: (HomeUiEvent) -> Unit
+) {
     Scaffold(
         modifier = Modifier
             .background(color = Color.White)
@@ -57,7 +65,7 @@ fun Home() {
                 fontWeight = FontWeight.Bold
             )
             Spacer(modifier = Modifier.height(8.dp))
-            RecommendationSection(productItem = productItems, navigateToDetail = {})
+            RecommendationSection(productItem = uiState.products, navigateToDetail = {})
         }
     }
 }
@@ -81,41 +89,43 @@ val shapeItems = listOf(
     )
 )
 
-val productItems = listOf(
-    ProductItem(
-        imageUrl = "https://picsum.photos/400/400",
-        title = "Produk 1",
-        priceTag = "Rp. 15.000",
-    ),
-    ProductItem(
-        imageUrl = "https://picsum.photos/400/400",
-        title = "Produk 2",
-        priceTag = "Rp. 19.000",
-    ),
-    ProductItem(
-        imageUrl = "https://picsum.photos/400/400",
-        title = "Produk 3",
-        priceTag = "Rp. 13.000",
-    ),
-    ProductItem(
-        imageUrl = "https://picsum.photos/400/400",
-        title = "Produk 4",
-        priceTag = "Rp. 63.000",
-    ),
-    ProductItem(
-        imageUrl = "https://picsum.photos/400/400",
-        title = "Produk 5",
-        priceTag = "Rp. 43.000",
-    ),
-    ProductItem(
-        imageUrl = "https://picsum.photos/400/400",
-        title = "Produk 6",
-        priceTag = "Rp. 143.000",
-    ),
-)
-
 @DefaultPreview
 @Composable
 fun PreviewHome() {
-    Home()
+    val productItems = listOf(
+        Product(
+            imageUrl = "https://picsum.photos/400/400",
+            title = "Produk 1",
+            priceTag = "Rp. 15.000",
+        ),
+        Product(
+            imageUrl = "https://picsum.photos/400/400",
+            title = "Produk 2",
+            priceTag = "Rp. 19.000",
+        ),
+        Product(
+            imageUrl = "https://picsum.photos/400/400",
+            title = "Produk 3",
+            priceTag = "Rp. 13.000",
+        ),
+        Product(
+            imageUrl = "https://picsum.photos/400/400",
+            title = "Produk 4",
+            priceTag = "Rp. 63.000",
+        ),
+        Product(
+            imageUrl = "https://picsum.photos/400/400",
+            title = "Produk 5",
+            priceTag = "Rp. 43.000",
+        ),
+        Product(
+            imageUrl = "https://picsum.photos/400/400",
+            title = "Produk 6",
+            priceTag = "Rp. 143.000",
+        ),
+    )
+
+    Home(uiState = HomeUiState(
+        products = productItems
+    ))
 }

@@ -4,8 +4,6 @@ package dev.abdl.fakecommerce.features.home.domain
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-class ProductApiModel : ArrayList<ProductApiModelItem>()
-
 @Serializable
 data class ProductApiModelItem(
     @SerialName("category")
@@ -31,3 +29,11 @@ data class Rating(
     @SerialName("rate")
     val rate: Double
 )
+
+fun ProductApiModelItem.toProduct(): Product{
+    return Product(
+        imageUrl = this.image,
+        title = this.title,
+        priceTag = this.price.toString()
+    )
+}

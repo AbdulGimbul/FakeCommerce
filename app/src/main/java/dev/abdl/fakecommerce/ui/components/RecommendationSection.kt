@@ -12,10 +12,11 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import dev.abdl.fakecommerce.features.home.domain.Product
 
 @Composable
 fun RecommendationSection(
-    productItem: List<ProductItem>,
+    productItem: List<Product>,
     modifier: Modifier = Modifier,
     navigateToDetail: (Long) -> Unit,
 ) {
@@ -46,32 +47,32 @@ fun RecommendationSection(
 @Composable
 fun PreviewRecommendationExample() {
     val productItem = listOf(
-        ProductItem(
+        Product(
             imageUrl = "https://picsum.photos/400/400",
             title = "Produk 1",
             priceTag = "Rp. 15.000",
         ),
-        ProductItem(
+        Product(
             imageUrl = "https://picsum.photos/400/400",
             title = "Produk 2",
             priceTag = "Rp. 19.000",
         ),
-        ProductItem(
+        Product(
             imageUrl = "https://picsum.photos/400/400",
             title = "Produk 3",
             priceTag = "Rp. 13.000",
         ),
-        ProductItem(
+        Product(
             imageUrl = "https://picsum.photos/400/400",
             title = "Produk 4",
             priceTag = "Rp. 63.000",
         ),
-        ProductItem(
+        Product(
             imageUrl = "https://picsum.photos/400/400",
             title = "Produk 5",
             priceTag = "Rp. 43.000",
         ),
-        ProductItem(
+        Product(
             imageUrl = "https://picsum.photos/400/400",
             title = "Produk 6",
             priceTag = "Rp. 143.000",

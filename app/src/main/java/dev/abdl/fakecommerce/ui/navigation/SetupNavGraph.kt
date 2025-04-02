@@ -11,16 +11,15 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import dev.abdl.fakecommerce.features.auth.presentation.LoginScreen
-import dev.abdl.fakecommerce.features.auth.presentation.LoginViewModel
-import androidx.compose.runtime.getValue
-import androidx.hilt.navigation.compose.hiltViewModel
 import dev.abdl.fakecommerce.features.home.presentation.HomeScreen
 
 @Composable
@@ -46,7 +45,7 @@ fun SetupNavGraph(navController: NavHostController) {
             }
 
             composable(route = Screen.Home.route) {
-                HomeScreen()
+                HomeScreen(hiltViewModel())
             }
         }
     }
