@@ -51,9 +51,8 @@ fun ProductItem(
         )
         Row(modifier = Modifier.fillMaxWidth()) {
             Text(
-                text = productItem.priceTag,
+                text = "$${productItem.priceTag}",
                 fontSize = 14.sp,
-                color = Color.Green,
                 modifier = Modifier.weight(1f)
             )
         }
@@ -63,12 +62,12 @@ fun ProductItem(
 @Composable
 @DefaultPreview
 fun ProductReview() {
-    MaterialTheme {
-        ProductItem(
-            productItem = Product(
-                imageUrl = "https://picsum.photos/400/400", title = "Produk 6",
-                priceTag = "Rp. 143.000",
-            )
-        )
-    }
+//    MaterialTheme {
+//        ProductItem(
+//            productItem = Product(
+//                imageUrl = "https://picsum.photos/400/400", title = "Produk 6",
+//                priceTag = "Rp. 143.000",
+//            )
+//        )
+//    }
 }

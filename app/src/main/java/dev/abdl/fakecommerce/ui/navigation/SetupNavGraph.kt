@@ -5,13 +5,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.ShoppingCart
-import androidx.compose.material3.Icon
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -21,32 +16,58 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import dev.abdl.fakecommerce.features.auth.presentation.LoginScreen
 import dev.abdl.fakecommerce.features.home.presentation.HomeScreen
+import dev.abdl.fakecommerce.features.cart.presentation.CartScreen
+import dev.abdl.fakecommerce.ui.components.ProfileBottomSheet
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SetupNavGraph(navController: NavHostController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
+    
+    var showProfileSheet by remember { mutableStateOf(false) }
 
     Scaffold(
         bottomBar = {
             if (currentRoute != Screen.Login.route) {
-                BottomBar(navController)
+                BottomBar(
+                    navController = navController,
+                    currentRoute = currentRoute,
+                    onProfileClick = { showProfileSheet = true }
+                )
             }
         }
-    ) {
+    ) { paddingValues ->
         NavHost(
             navController = navController,
             startDestination = Screen.Login.route,
-            modifier = Modifier.padding(it)
+            modifier = Modifier.padding(paddingValues)
         ) {
-
             composable(route = Screen.Login.route) {
                 LoginScreen(viewModel = hiltViewModel(), navController = navController)
             }
 
             composable(route = Screen.Home.route) {
-                HomeScreen(hiltViewModel())
+                HomeScreen(viewModel = hiltViewModel(), navController = navController)
             }
+
+            composable(route = Screen.Cart.route) {
+                CartScreen(navController = navController)
+            }
+        }
+
+        if (showProfileSheet) {
+            ProfileBottomSheet(
+                onDismiss = { showProfileSheet = false },
+                onLogout = {
+                    showProfileSheet = false
+                    navController.navigate(Screen.Login.route) {
+                        popUpTo(navController.graph.findStartDestination().id) {
+                            inclusive = true
+                        }
+                    }
+                }
+            )
         }
     }
 }
@@ -54,14 +75,13 @@ fun SetupNavGraph(navController: NavHostController) {
 @Composable
 private fun BottomBar(
     navController: NavHostController,
-    modifier: Modifier = Modifier,
+    currentRoute: String?,
+    onProfileClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     NavigationBar(
         modifier = modifier
     ) {
-        val navBackStackEntry by navController.currentBackStackEntryAsState()
-        val currentRoute = navBackStackEntry?.destination?.route
-
         val navigationItems = listOf(
             BottomNavItem(
                 title = "Beranda",
@@ -77,13 +97,16 @@ private fun BottomBar(
                 title = "Profile",
                 icon = Icons.Outlined.AccountCircle,
                 screen = Screen.Profile
-            ),
+            )
         )
-        NavigationBar {
-            navigationItems.map { item ->
-                NavigationBarItem(
-                    selected = currentRoute == item.screen.route,
-                    onClick = {
+
+        navigationItems.forEach { item ->
+            NavigationBarItem(
+                selected = currentRoute == item.screen.route,
+                onClick = {
+                    if (item.screen == Screen.Profile) {
+                        onProfileClick()
+                    } else {
                         navController.navigate(item.screen.route) {
                             popUpTo(navController.graph.findStartDestination().id) {
                                 saveState = true
@@ -91,16 +114,16 @@ private fun BottomBar(
                             restoreState = true
                             launchSingleTop = true
                         }
-                    },
-                    label = { Text(text = item.title) },
-                    icon = {
-                        Icon(
-                            imageVector = item.icon,
-                            contentDescription = item.title
-                        )
                     }
-                )
-            }
+                },
+                icon = {
+                    Icon(
+                        imageVector = item.icon,
+                        contentDescription = item.title
+                    )
+                },
+                label = { Text(text = item.title) }
+            )
         }
     }
 }

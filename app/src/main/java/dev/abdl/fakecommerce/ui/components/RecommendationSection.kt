@@ -46,38 +46,38 @@ fun RecommendationSection(
 @DefaultPreview
 @Composable
 fun PreviewRecommendationExample() {
-    val productItem = listOf(
-        Product(
-            imageUrl = "https://picsum.photos/400/400",
-            title = "Produk 1",
-            priceTag = "Rp. 15.000",
-        ),
-        Product(
-            imageUrl = "https://picsum.photos/400/400",
-            title = "Produk 2",
-            priceTag = "Rp. 19.000",
-        ),
-        Product(
-            imageUrl = "https://picsum.photos/400/400",
-            title = "Produk 3",
-            priceTag = "Rp. 13.000",
-        ),
-        Product(
-            imageUrl = "https://picsum.photos/400/400",
-            title = "Produk 4",
-            priceTag = "Rp. 63.000",
-        ),
-        Product(
-            imageUrl = "https://picsum.photos/400/400",
-            title = "Produk 5",
-            priceTag = "Rp. 43.000",
-        ),
-        Product(
-            imageUrl = "https://picsum.photos/400/400",
-            title = "Produk 6",
-            priceTag = "Rp. 143.000",
-        ),
-    )
-
-    RecommendationSection(productItem, navigateToDetail = {})
+//    val productItem = listOf(
+//        Product(
+//            imageUrl = "https://picsum.photos/400/400",
+//            title = "Produk 1",
+//            priceTag = "Rp. 15.000",
+//        ),
+//        Product(
+//            imageUrl = "https://picsum.photos/400/400",
+//            title = "Produk 2",
+//            priceTag = "Rp. 19.000",
+//        ),
+//        Product(
+//            imageUrl = "https://picsum.photos/400/400",
+//            title = "Produk 3",
+//            priceTag = "Rp. 13.000",
+//        ),
+//        Product(
+//            imageUrl = "https://picsum.photos/400/400",
+//            title = "Produk 4",
+//            priceTag = "Rp. 63.000",
+//        ),
+//        Product(
+//            imageUrl = "https://picsum.photos/400/400",
+//            title = "Produk 5",
+//            priceTag = "Rp. 43.000",
+//        ),
+//        Product(
+//            imageUrl = "https://picsum.photos/400/400",
+//            title = "Produk 6",
+//            priceTag = "Rp. 143.000",
+//        ),
+//    )
+//
+//    RecommendationSection(productItem, navigateToDetail = {})
 }

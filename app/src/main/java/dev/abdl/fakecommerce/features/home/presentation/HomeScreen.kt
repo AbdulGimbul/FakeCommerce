@@ -1,37 +1,33 @@
 package dev.abdl.fakecommerce.features.home.presentation
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavController
 import dev.abdl.fakecommerce.R
+import dev.abdl.fakecommerce.features.home.domain.Category
 import dev.abdl.fakecommerce.features.home.domain.Product
 import dev.abdl.fakecommerce.ui.components.CategorySection
 import dev.abdl.fakecommerce.ui.components.DefaultPreview
 import dev.abdl.fakecommerce.ui.components.RecommendationSection
-import dev.abdl.fakecommerce.ui.components.ShapeItem
 
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel,
+    navController: NavController
 ) {
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val uiState = viewModel.uiState.collectAsStateWithLifecycle()
 
     Home(
-        uiState = uiState,
-//        uiEvent = HomeUiEvent()
+        uiState = uiState.value,
+        onEvent = { viewModel.onEvent(it) }
     )
 }
 
@@ -39,93 +35,121 @@ fun HomeScreen(
 @Composable
 fun Home(
     uiState: HomeUiState,
-//    uiEvent: (HomeUiEvent) -> Unit
+    onEvent: (HomeUiEvent) -> Unit
 ) {
-    Scaffold(
+    Column(
         modifier = Modifier
-            .background(color = Color.White)
-            .padding(16.dp)
+            .fillMaxSize()
+            .padding(top = 16.dp)
     ) {
-        Column(
+        Text(
+            text = "Categories",
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(horizontal = 16.dp)
+        )
+        
+        Spacer(modifier = Modifier.height(8.dp))
+        
+        CategorySection(
+            categoryItems = categoryItems,
+            selectedCategory = uiState.selectedCategory,
+            onCategorySelected = { category ->
+                onEvent(HomeUiEvent.CategorySelected(category))
+            }
+        )
+        
+        Spacer(modifier = Modifier.height(16.dp))
+        
+        Row(
             modifier = Modifier
-                .background(Color.White)
                 .fillMaxWidth()
-                .padding(it)
+                .padding(horizontal = 16.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Spacer(modifier = Modifier.height(16.dp))
             Text(
-                text = "Kategori",
+                text = when {
+                    uiState.selectedCategory != null -> "${uiState.selectedCategory} Products"
+                    else -> "All Products"
+                },
                 fontWeight = FontWeight.Bold
             )
-            Spacer(modifier = Modifier.height(8.dp))
-            CategorySection(shapeItems = shapeItems)
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(
-                text = "Rekomendasi",
-                fontWeight = FontWeight.Bold
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            RecommendationSection(productItem = uiState.products, navigateToDetail = {})
+            
+            if (uiState.selectedCategory != null) {
+                IconButton(
+                    onClick = { onEvent(HomeUiEvent.ClearCategoryFilter) }
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Clear,
+                        contentDescription = "Clear filter"
+                    )
+                }
+            }
         }
+        
+        if (uiState.isLoading) {
+            CircularProgressIndicator(
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            )
+        }
+
+        uiState.errorMessage?.let { error ->
+            Text(
+                text = error,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.error,
+                modifier = Modifier.padding(horizontal = 16.dp)
+            )
+        }
+        
+        RecommendationSection(
+            productItem = uiState.products,
+            navigateToDetail = { /* TODO: Implement navigation */ }
+        )
     }
 }
 
-val shapeItems = listOf(
-    ShapeItem(
-        imageUrl = R.drawable.ic_launcher_foreground,
-        label = "Sayur"
+private val categoryItems = listOf(
+    Category(
+        imageUrl = R.drawable.ic_mens_clothing,
+        label = "men's clothing"
     ),
-    ShapeItem(
-        imageUrl = R.drawable.ic_launcher_foreground,
-        label = "Buah"
+    Category(
+        imageUrl = R.drawable.ic_jewelry,
+        label = "jewelery"
     ),
-    ShapeItem(
-        imageUrl = R.drawable.ic_launcher_foreground,
-        label = "Umbi"
+    Category(
+        imageUrl = R.drawable.ic_electronics,
+        label = "electronics"
     ),
-    ShapeItem(
-        imageUrl = R.drawable.ic_launcher_foreground,
-        label = "Rempah"
+    Category(
+        imageUrl = R.drawable.ic_womens_clothing,
+        label = "women's clothing"
     )
 )
 
 @DefaultPreview
 @Composable
-fun PreviewHome() {
-    val productItems = listOf(
+private fun PreviewHome() {
+    val products = listOf(
         Product(
-            imageUrl = "https://picsum.photos/400/400",
-            title = "Produk 1",
-            priceTag = "Rp. 15.000",
+            imageUrl = "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+            title = "Fjallraven - Foldsack No. 1 Backpack",
+            priceTag = "$109.95",
+            category = "men's clothing"
         ),
         Product(
-            imageUrl = "https://picsum.photos/400/400",
-            title = "Produk 2",
-            priceTag = "Rp. 19.000",
-        ),
-        Product(
-            imageUrl = "https://picsum.photos/400/400",
-            title = "Produk 3",
-            priceTag = "Rp. 13.000",
-        ),
-        Product(
-            imageUrl = "https://picsum.photos/400/400",
-            title = "Produk 4",
-            priceTag = "Rp. 63.000",
-        ),
-        Product(
-            imageUrl = "https://picsum.photos/400/400",
-            title = "Produk 5",
-            priceTag = "Rp. 43.000",
-        ),
-        Product(
-            imageUrl = "https://picsum.photos/400/400",
-            title = "Produk 6",
-            priceTag = "Rp. 143.000",
-        ),
+            imageUrl = "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
+            title = "John Hardy Women's Chain Bracelet",
+            priceTag = "$695.00",
+            category = "jewelery"
+        )
     )
 
-    Home(uiState = HomeUiState(
-        products = productItems
-    ))
+    MaterialTheme {
+        Home(
+            uiState = HomeUiState(products = products),
+            onEvent = {}
+        )
+    }
 }

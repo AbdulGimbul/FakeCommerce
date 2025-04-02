@@ -34,6 +34,7 @@ fun ProductApiModelItem.toProduct(): Product{
     return Product(
         imageUrl = this.image,
         title = this.title,
-        priceTag = this.price.toString()
+        priceTag = this.price.toString(),
+        category = this.category
     )
 }

@@ -4,6 +4,7 @@ import dev.abdl.fakecommerce.features.home.domain.Product
 
 data class HomeUiState(
     val products: List<Product> = emptyList(),
-    val errorMessage: String? = null,
-    val isLoading: Boolean = false
+    val selectedCategory: String? = null,
+    val isLoading: Boolean = false,
+    val errorMessage: String? = null
 )
