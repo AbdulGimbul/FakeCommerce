@@ -13,11 +13,12 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val sessionHandler: SessionHandler
-): ViewModel() {
+) : ViewModel() {
     private val _username = MutableStateFlow("")
     val username = _username.asStateFlow()
 
-    fun getUsername() = viewModelScope.launch { _username.value = sessionHandler.getUsername().first() }
+    fun getUsername() =
+        viewModelScope.launch { _username.value = sessionHandler.getUsername().first() }
 
     fun clearSession() = viewModelScope.launch { sessionHandler.clearData() }
 }

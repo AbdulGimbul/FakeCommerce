@@ -23,7 +23,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -53,7 +52,7 @@ fun Detail(
 ) {
     val context = LocalContext.current
 
-    if (uiState.isShowSnackbar){
+    if (uiState.isShowSnackbar) {
         Toast.makeText(context, "Product added to cart", Toast.LENGTH_SHORT).show()
     }
 

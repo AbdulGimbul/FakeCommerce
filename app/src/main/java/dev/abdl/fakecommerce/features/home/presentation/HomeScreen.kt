@@ -25,7 +25,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import dev.abdl.fakecommerce.R
 import dev.abdl.fakecommerce.features.home.domain.Category
-import dev.abdl.fakecommerce.features.home.domain.Product
 import dev.abdl.fakecommerce.ui.components.CategorySection
 import dev.abdl.fakecommerce.ui.components.DefaultPreview
 import dev.abdl.fakecommerce.ui.components.RecommendationSection

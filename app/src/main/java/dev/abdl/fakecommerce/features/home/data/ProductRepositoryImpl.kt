@@ -14,7 +14,7 @@ class ProductRepositoryImpl @Inject constructor(
             listOf("products")
         )
     }
-    
+
     override suspend fun getProductDetail(id: Int): NetworkResult<ProductApiModelItem, NetworkException> {
         return requestHandler.get(
             listOf("products", id.toString())

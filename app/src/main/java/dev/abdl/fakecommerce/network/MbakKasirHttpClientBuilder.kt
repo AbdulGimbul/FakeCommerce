@@ -2,7 +2,6 @@ package dev.abdl.fakecommerce.network
 
 import dev.abdl.fakecommerce.storage.SessionHandler
 import io.ktor.client.HttpClient
-import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.auth.Auth
 import io.ktor.client.plugins.auth.providers.BearerTokens

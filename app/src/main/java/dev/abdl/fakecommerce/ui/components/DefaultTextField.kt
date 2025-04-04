@@ -1,6 +1,5 @@
 package dev.abdl.fakecommerce.ui.components
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,7 +18,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalFocusManager
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -29,7 +27,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun DefaultTextField(
     value: String,
-     label: String,
+    label: String,
     hint: String = "",
     onValueChanged: (value: String) -> Unit,
     isPasswordField: Boolean = false,

@@ -30,7 +30,7 @@ data class Rating(
     val rate: Double
 )
 
-fun ProductApiModelItem.toProduct(): Product{
+fun ProductApiModelItem.toProduct(): Product {
     return Product(
         id = this.id,
         imageUrl = this.image,

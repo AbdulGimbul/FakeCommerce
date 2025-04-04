@@ -60,10 +60,12 @@ class HomeViewModel @Inject constructor(
                 _uiState.value = _uiState.value.copy(selectedCategory = event.category)
                 updateProductsList()
             }
+
             is HomeUiEvent.ClearCategoryFilter -> {
                 _uiState.value = _uiState.value.copy(selectedCategory = null)
                 updateProductsList()
             }
+
             is HomeUiEvent.RefreshProducts -> {
                 getProducts()
             }

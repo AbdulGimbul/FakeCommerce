@@ -7,12 +7,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.abdl.fakecommerce.features.cart.data.CartRepository
 import dev.abdl.fakecommerce.features.cart.domain.CartEntity
 import dev.abdl.fakecommerce.features.home.data.ProductRepository
-import dev.abdl.fakecommerce.features.home.domain.ProductApiModelItem
 import dev.abdl.fakecommerce.network.onError
 import dev.abdl.fakecommerce.network.onSuccess
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject

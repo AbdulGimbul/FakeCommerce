@@ -1,7 +1,6 @@
 package dev.abdl.fakecommerce.di
 
 import android.content.Context
-import androidx.room.Room
 import androidx.datastore.core.DataStore
 import androidx.datastore.core.handlers.ReplaceFileCorruptionHandler
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
