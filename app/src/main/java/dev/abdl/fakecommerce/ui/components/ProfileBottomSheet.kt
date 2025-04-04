@@ -27,6 +27,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.abdl.fakecommerce.ui.navigation.MainViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -36,7 +37,7 @@ fun ProfileBottomSheet(
     onLogout: () -> Unit,
     viewModel: MainViewModel
 ) {
-    var username by remember { mutableStateOf("") }
+    val username by viewModel.username.collectAsStateWithLifecycle()
 
     LaunchedEffect(Unit) {
         viewModel.getUsername()

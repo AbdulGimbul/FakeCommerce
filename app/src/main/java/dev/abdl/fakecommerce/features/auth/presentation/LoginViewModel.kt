@@ -11,6 +11,7 @@ import dev.abdl.fakecommerce.storage.SessionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -23,6 +24,14 @@ class LoginViewModel @Inject constructor(
 
     private val _uiState = MutableStateFlow<LoginUiState>(LoginUiState.NotAuthenticated())
     val uiState: StateFlow<LoginUiState> = _uiState
+
+    init {
+        viewModelScope.launch {
+            if (sessionHandler.getToken().first().isNotEmpty()) {
+                _uiState.value = LoginUiState.Authenticated
+            }
+        }
+    }
 
     fun onEvent(uiEvent: LoginUiEvent) {
         when (uiEvent) {

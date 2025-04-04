@@ -2,11 +2,24 @@ package dev.abdl.fakecommerce.ui.navigation
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.ShoppingCart
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -17,9 +30,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.navArgument
 import dev.abdl.fakecommerce.features.auth.presentation.LoginScreen
+import dev.abdl.fakecommerce.features.cart.presentation.CartScreen
 import dev.abdl.fakecommerce.features.detail.presentation.DetailScreen
 import dev.abdl.fakecommerce.features.home.presentation.HomeScreen
-import dev.abdl.fakecommerce.features.cart.presentation.CartScreen
 import dev.abdl.fakecommerce.ui.components.ProfileBottomSheet
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -27,18 +40,30 @@ import dev.abdl.fakecommerce.ui.components.ProfileBottomSheet
 fun SetupNavGraph(navController: NavHostController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
-    
+
     var showProfileSheet by remember { mutableStateOf(false) }
 
     Scaffold(
         bottomBar = {
-            if (currentRoute != Screen.Login.route) {
+            if (currentRoute !in listOf(Screen.Login.route, "${Screen.Detail.route}/{productId}")) {
                 BottomBar(
                     navController = navController,
                     currentRoute = currentRoute,
                     onProfileClick = { showProfileSheet = true }
                 )
             }
+        },
+        topBar = {
+            if (currentRoute == "${Screen.Detail.route}/{productId}") {
+                TopAppBar(
+                    title = { Text("Product Detail") },
+                    navigationIcon = {
+                        IconButton(onClick = { navController.navigateUp() }) {
+                            Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back")
+                        }
+                    }
+                )
+            } else null
         }
     ) { paddingValues ->
         NavHost(
@@ -55,19 +80,16 @@ fun SetupNavGraph(navController: NavHostController) {
             }
 
             composable(route = Screen.Cart.route) {
-                CartScreen(navController = navController)
+                CartScreen(viewModel = hiltViewModel(), navController = navController)
             }
-            
+
             composable(
                 route = "${Screen.Detail.route}/{productId}",
                 arguments = listOf(
                     navArgument("productId") { type = NavType.StringType }
                 )
             ) {
-                DetailScreen(
-                    viewModel = hiltViewModel(),
-                    navController = navController
-                )
+                DetailScreen(viewModel = hiltViewModel())
             }
         }
 

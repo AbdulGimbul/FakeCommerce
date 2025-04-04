@@ -4,11 +4,15 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dev.abdl.fakecommerce.features.cart.data.CartRepository
+import dev.abdl.fakecommerce.features.cart.domain.CartEntity
 import dev.abdl.fakecommerce.features.home.data.ProductRepository
 import dev.abdl.fakecommerce.features.home.domain.ProductApiModelItem
 import dev.abdl.fakecommerce.network.onError
 import dev.abdl.fakecommerce.network.onSuccess
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -16,6 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailViewModel @Inject constructor(
     private val repository: ProductRepository,
+    private val cartRepository: CartRepository,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -25,6 +30,14 @@ class DetailViewModel @Inject constructor(
     init {
         savedStateHandle.get<String>("productId")?.let { productId ->
             getProductDetail(productId.toInt())
+        }
+    }
+
+    fun onEvent(event: DetailUiEvent) {
+        when (event) {
+            is DetailUiEvent.AddToCartClicked -> {
+                addToCart()
+            }
         }
     }
 
@@ -46,11 +59,20 @@ class DetailViewModel @Inject constructor(
                 }
         }
     }
+
+    private fun addToCart() {
+        _uiState.value = _uiState.value.copy(isShowSnackbar = false)
+        viewModelScope.launch {
+            _uiState.value.product?.let { product ->
+                val item = CartEntity(
+                    productId = product.id,
+                    title = product.title,
+                    imageUrl = product.image,
+                    price = product.price
+                )
+                cartRepository.addToCart(item)
+                _uiState.value = _uiState.value.copy(isAddedToCart = true, isShowSnackbar = true)
+            }
+        }
+    }
 }
-
-data class DetailUiState(
-    val product: ProductApiModelItem? = null,
-    val isLoading: Boolean = false,
-    val errorMessage: String? = null
-)
-

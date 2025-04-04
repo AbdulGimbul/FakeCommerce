@@ -3,8 +3,9 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.hilt)
+    alias(libs.plugins.ksp)
     kotlin("plugin.serialization") version "2.1.10"
-    kotlin("kapt")
+//    kotlin("kapt")
 }
 
 android {
@@ -57,9 +58,13 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.material.icons.extended)
     implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
-    kapt(libs.androidx.hilt.compiler)
+    ksp(libs.hilt.android.compiler)
+    ksp(libs.androidx.hilt.compiler)
+    ksp(libs.room.compiler)
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.lifecycle.runtime.compose)
     implementation(libs.coil.compose)
